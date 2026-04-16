@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Review</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+}
+
+.container {
+    max-width: 420px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.star {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star.active {
+    color: #FFD700;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.google-btn {
+    background: #000;
+    color: #fff;
+}
+
+.zomato-btn {
+    background: #e23744;
+    color: #fff;
+}
+
+.upload-box {
+    border: 2px dashed #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.preview {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Quick Review</h2>
+
+    <!-- Rating -->
+    <div class="rating">
+        <span class="star" data="1">★</span>
+        <span class="star" data="2">★</span>
+        <span class="star" data="3">★</span>
+        <span class="star" data="4">★</span>
+        <span class="star" data="5">★</span>
+    </div>
+
+    <!-- Staff -->
+    <label>Select Staff</label>
+    <select id="staff">
+        <option value="">Choose Staff</option>
+        <option>Sana</option>
+        <option>Kamana</option>
+        <option>Rahul</option>
+        <option>Nikhil</option>
+        <option>Yaseen</option>
+        <option>Vaibhav</option>
+        <option>Swapnil</option>
+        <option>Amandeep</option>
+    </select>
+
+    <!-- Review -->
+    <label>Your Review</label>
+    <textarea id="review" placeholder="Your review will appear here..."></textarea>
+
+    <!-- Photo -->
+    <div class="upload-box">
+        Upload Photo
+        <input type="file" id="photo" accept="image/*">
+        <div id="preview"></div>
+    </div>
+
+    <!-- Buttons -->
+    <button class="google-btn" onclick="postReview('google')">
+        ⭐ Post on Google
+    </button>
+
+    <button class="zomato-btn" onclick="postReview('zomato')">
+        🍽️ Post on Zomato
+    </button>
+</div>
+
+<script>
+let rating = 0;
+
+// ⭐ Rating logic
+document.querySelectorAll('.star').forEach((star, index) => {
+    star.addEventListener('click', () => {
+        rating = index + 1;
+
+        document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+        for (let i = 0; i < rating; i++) {
+            document.querySelectorAll('.star')[i].classList.add('active');
+        }
+
+        generateReview();
+    });
+});
+
+// ✍️ Auto Review
+function generateReview() {
+    let staff = document.getElementById("staff").value;
+
+    if (!staff || rating === 0) return;
+
+    let text = "";
+
+    if (rating >= 4) {
+        text = `Great experience! ${staff} was very helpful and provided excellent service. Will visit again.`;
+    } else if (rating === 3) {
+        text = `Good experience. ${staff} did a decent job. Can improve a bit.`;
+    } else {
+        text = `Not satisfied with the service. ${staff} needs improvement.`;
+    }
+
+    document.getElementById("review").value = text;
+}
+
+document.getElementById("staff").addEventListener("change", generateReview);
+
+// 📸 Photo preview
+document.getElementById("photo").addEventListener("change", function(e) {
+    let file = e.target.files[0];
+    if (!file) return;
+
+    let reader = new FileReader();
+    reader.onload = function(event) {
+        document.getElementById("preview").innerHTML =
+            `<img src="${event.target.result}" class="preview">`;
+    };
+    reader.readAsDataURL(file);
+});
+
+// 🚀 Post Review (Google + Zomato with Android/iOS detection)
+function postReview(platform) {
+    let reviewText = document.getElementById("review").value;
+
+    if (!reviewText) {
+        alert("Please generate or write a review first.");
+        return;
+    }
+
+    navigator.clipboard.writeText(reviewText);
+
+    if (platform === "google") {
+        alert("Review copied! Paste it on Google.");
+        window.open("https://www.google.com/search?q=pizzaexpress+powai+reviews#ebo=2", "_blank");
+    }
+
+    if (platform === "zomato") {
+        alert("Opening Zomato app...");
+
+        const zomatoWeb = "https://link.zomato.com/xqzv/rshare?id=1328489136fbb945d";
+        const ua = navigator.userAgent;
+
+        const isAndroid = /android/i.test(ua);
+        const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+        if (isAndroid) {
+            window.location.href =
+                "intent://r/1328489136#Intent;scheme=zomato;package=com.application.zomato;end";
+
+            setTimeout(() => {
+                window.open(zomatoWeb, "_blank");
+            }, 1500);
+        }
+
+        else if (isIOS) {
+            window.location.href = "zomato://r/1328489136";
+
+            setTimeout(() => {
+                window.open(zomatoWeb, "_blank");
+            }, 2000);
+        }
+
+        else {
+            window.open(zomatoWeb, "_blank");
+        }
+    }
+}
+</script>
+
+</body>
+</html>
