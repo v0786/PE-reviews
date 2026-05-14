@@ -1,246 +1,793 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Review</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>PizzaExpress Quick Review</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #f5f5f5;
-    margin: 0;
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
 }
 
-.container {
-    max-width: 420px;
-    margin: 30px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+body{
+
+    font-family:'Roboto',sans-serif;
+
+    background:#111;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    color:#fff;
+
 }
 
-h2 {
-    text-align: center;
+.container{
+
+    width:100%;
+
+    max-width:430px;
+
+    background:#1b1b1b;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.45);
+
+    animation:fadeIn .4s ease;
+
 }
 
-.rating {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
+.logo{
+
+    text-align:center;
+
+    margin-bottom:18px;
+
 }
 
-.star {
-    font-size: 30px;
-    color: #ccc;
-    cursor: pointer;
+.logo h1{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#fff;
+
 }
 
-.star.active {
-    color: #FFD700;
+.logo p{
+
+    color:#aaa;
+
+    font-size:14px;
+
+    margin-top:5px;
+
 }
 
-select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+.section{
+
+    margin-top:18px;
+
 }
 
-textarea {
-    height: 100px;
-    resize: none;
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    color:#ddd;
+
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
+.rating{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:8px;
+
 }
 
-.google-btn {
-    background: #000;
-    color: #fff;
+.star{
+
+    font-size:38px;
+
+    cursor:pointer;
+
+    color:#444;
+
+    transition:.2s;
+
+    user-select:none;
+
 }
 
-.zomato-btn {
-    background: #e23744;
-    color: #fff;
+.star:hover{
+
+    transform:scale(1.18);
+
 }
 
-.upload-box {
-    border: 2px dashed #ddd;
-    padding: 15px;
-    text-align: center;
-    border-radius: 10px;
-    margin-bottom: 15px;
+.star.active{
+
+    color:#FFD700;
+
 }
 
-.preview {
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 10px;
+select,
+
+textarea{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    background:#2b2b2b;
+
+    color:#fff;
+
+    font-size:15px;
+
 }
+
+select{
+
+    cursor:pointer;
+
+}
+
+textarea{
+
+    min-height:120px;
+
+    resize:none;
+
+    line-height:1.5;
+
+}
+
+.counter{
+
+    text-align:right;
+
+    font-size:12px;
+
+    color:#999;
+
+    margin-top:6px;
+
+}
+
+.upload-box{
+
+    border:2px dashed #444;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    text-align:center;
+
+    background:#242424;
+
+    transition:.3s;
+
+}
+
+.upload-box:hover{
+
+    border-color:#e23744;
+
+}
+
+input[type="file"]{
+
+    margin-top:10px;
+
+    color:#ddd;
+
+    width:100%;
+
+}
+
+.preview-wrapper{
+
+    margin-top:15px;
+
+}
+
+.preview{
+
+    width:100%;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+    max-height:220px;
+
+}
+
+.buttons{
+
+    margin-top:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+button{
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.google-btn{
+
+    background:#fff;
+
+    color:#000;
+
+}
+
+.zomato-btn{
+
+    background:#e23744;
+
+    color:#fff;
+
+}
+
+.toast{
+
+    position:fixed;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#1f1f1f;
+
+    color:#fff;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    bottom:35px;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .container{
+
+        padding:20px;
+
+    }
+
+    .star{
+
+        font-size:34px;
+
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
-    <h2>Quick Review</h2>
+
+    <div class="logo">
+
+        <h1>Quick Review</h1>
+
+        <p>Share your experience with us</p>
+
+    </div>
 
     <!-- Rating -->
-    <div class="rating">
-        <span class="star" data="1">★</span>
-        <span class="star" data="2">★</span>
-        <span class="star" data="3">★</span>
-        <span class="star" data="4">★</span>
-        <span class="star" data="5">★</span>
+
+    <div class="section">
+
+        <label>Rate Your Experience</label>
+
+        <div class="rating" id="ratingContainer">
+
+            <span class="star" data-rating="1">★</span>
+
+            <span class="star" data-rating="2">★</span>
+
+            <span class="star" data-rating="3">★</span>
+
+            <span class="star" data-rating="4">★</span>
+
+            <span class="star" data-rating="5">★</span>
+
+        </div>
+
     </div>
 
     <!-- Staff -->
-    <label>Select Staff</label>
-    <select id="staff">
-        <option value="">Choose Staff</option>
-        <option>Sana</option>
-        <option>Kamana</option>
-        <option>Rahul</option>
-        <option>Nikhil</option>
-        <option>Yaseen</option>
-        <option>Vaibhav</option>
-        <option>Swapnil</option>
-        <option>Amandeep</option>
-    </select>
+
+    <div class="section">
+
+        <label>Select Staff</label>
+
+        <select id="staff">
+
+            <option value="">Choose Staff</option>
+
+            <option>Sana</option>
+
+            <option>Kamana</option>
+
+            <option>Rahul</option>
+
+            <option>Nikhil</option>
+
+            <option>Yaseen</option>
+
+            <option>Vaibhav</option>
+
+            <option>Swapnil</option>
+
+            <option>Amandeep</option>
+
+        </select>
+
+    </div>
 
     <!-- Review -->
-    <label>Your Review</label>
-    <textarea id="review" placeholder="Your review will appear here..."></textarea>
 
-    <!-- Photo -->
-    <div class="upload-box">
-        Upload Photo
-        <input type="file" id="photo" accept="image/*">
-        <div id="preview"></div>
+    <div class="section">
+
+        <label>Your Review</label>
+
+        <textarea 
+
+            id="review"
+
+            maxlength="300"
+
+            placeholder="Your review will appear here..."
+
+        ></textarea>
+
+        <div class="counter">
+
+            <span id="charCount">0</span>/300
+
+        </div>
+
+    </div>
+
+    <!-- Upload -->
+
+    <div class="section">
+
+        <div class="upload-box">
+
+            <div>📸 Upload Food / Experience Photo</div>
+
+            <input type="file" id="photo" accept="image/*">
+
+            <div class="preview-wrapper" id="preview"></div>
+
+        </div>
+
     </div>
 
     <!-- Buttons -->
-    <button class="google-btn" onclick="postReview('google')">
-        ⭐ Post on Google
-    </button>
 
-    <button class="zomato-btn" onclick="postReview('zomato')">
-        🍽️ Post on Zomato
-    </button>
+    <div class="buttons">
+
+        <button class="google-btn" onclick="postReview('google')">
+
+            ⭐ Post on Google
+
+        </button>
+
+        <button class="zomato-btn" onclick="postReview('zomato')">
+
+            🍽️ Post on Zomato
+
+        </button>
+
+    </div>
+
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
+
 let rating = 0;
 
-// ⭐ Rating logic
-document.querySelectorAll('.star').forEach((star, index) => {
-    star.addEventListener('click', () => {
+const stars = document.querySelectorAll('.star');
+
+const reviewBox = document.getElementById('review');
+
+const staffSelect = document.getElementById('staff');
+
+const charCount = document.getElementById('charCount');
+
+// ⭐ STAR CLICK
+
+stars.forEach((star,index)=>{
+
+    star.addEventListener('click',()=>{
+
         rating = index + 1;
 
-        document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
-        for (let i = 0; i < rating; i++) {
-            document.querySelectorAll('.star')[i].classList.add('active');
-        }
+        updateStars(rating);
 
         generateReview();
+
     });
+
 });
 
-// ✍️ Auto Review
-function generateReview() {
-    let staff = document.getElementById("staff").value;
+// ⭐ STAR VISUAL
 
-    if (!staff || rating === 0) return;
+function updateStars(value){
 
-    let text = "";
+    stars.forEach((star,index)=>{
 
-    if (rating >= 4) {
-        text = `Great experience! ${staff} was very helpful and provided excellent service. Will visit again.`;
-    } else if (rating === 3) {
-        text = `Good experience. ${staff} did a decent job. Can improve a bit.`;
-    } else {
-        text = `Not satisfied with the service. ${staff} needs improvement.`;
-    }
+        if(index < value){
 
-    document.getElementById("review").value = text;
+            star.classList.add('active');
+
+        }else{
+
+            star.classList.remove('active');
+
+        }
+
+    });
+
 }
 
-document.getElementById("staff").addEventListener("change", generateReview);
+// ✍️ REVIEW GENERATOR
 
-// 📸 Photo preview
-document.getElementById("photo").addEventListener("change", function(e) {
-    let file = e.target.files[0];
-    if (!file) return;
+function generateReview(){
 
-    let reader = new FileReader();
-    reader.onload = function(event) {
-        document.getElementById("preview").innerHTML =
-            `<img src="${event.target.result}" class="preview">`;
+    const staff = staffSelect.value;
+
+    if(!staff || rating === 0) return;
+
+    const positiveReviews = [
+
+        `Amazing experience! ${staff} was very friendly and attentive. Loved the food and service.`,
+
+        `${staff} provided excellent service. Everything was perfect and well managed.`,
+
+        `Had a wonderful time. ${staff} was professional, polite and very helpful.`,
+
+        `Fantastic hospitality from ${staff}. Great food and ambience.`
+
+    ];
+
+    const mediumReviews = [
+
+        `Good experience overall. ${staff} was helpful and service was decent.`,
+
+        `Food was nice and ${staff} handled everything well.`,
+
+        `Nice ambience and decent service by ${staff}.`
+
+    ];
+
+    const negativeReviews = [
+
+        `Service could improve a little. Hoping for a better experience next time.`,
+
+        `Average experience overall. Some improvements are needed.`,
+
+        `${staff} tried helping but service was slightly slow.`
+
+    ];
+
+    let selectedReview = "";
+
+    if(rating >= 4){
+
+        selectedReview = positiveReviews[
+
+            Math.floor(Math.random() * positiveReviews.length)
+
+        ];
+
+    }else if(rating === 3){
+
+        selectedReview = mediumReviews[
+
+            Math.floor(Math.random() * mediumReviews.length)
+
+        ];
+
+    }else{
+
+        selectedReview = negativeReviews[
+
+            Math.floor(Math.random() * negativeReviews.length)
+
+        ];
+
+    }
+
+    reviewBox.value = selectedReview;
+
+    updateCounter();
+
+}
+
+// STAFF CHANGE
+
+staffSelect.addEventListener('change',generateReview);
+
+// 📸 IMAGE PREVIEW
+
+document.getElementById('photo').addEventListener('change',function(e){
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        document.getElementById('preview').innerHTML =
+
+        `<img src="${event.target.result}" class="preview">`;
+
     };
+
     reader.readAsDataURL(file);
+
 });
 
-// 🚀 Post Review (Google + Zomato with Android/iOS detection)
-function postReview(platform) {
-    let reviewText = document.getElementById("review").value;
+// 🔢 CHARACTER COUNTER
 
-    if (!reviewText) {
-        alert("Please generate or write a review first.");
+reviewBox.addEventListener('input',updateCounter);
+
+function updateCounter(){
+
+    charCount.innerText = reviewBox.value.length;
+
+}
+
+// 📋 COPY FUNCTION
+
+async function copyReview(text){
+
+    try{
+
+        await navigator.clipboard.writeText(text);
+
+        showToast("Review copied successfully!");
+
+    }catch{
+
+        const temp = document.createElement("textarea");
+
+        temp.value = text;
+
+        document.body.appendChild(temp);
+
+        temp.select();
+
+        document.execCommand("copy");
+
+        document.body.removeChild(temp);
+
+        showToast("Review copied successfully!");
+
+    }
+
+}
+
+// 🔔 TOAST
+
+function showToast(message){
+
+    const toast = document.getElementById('toast');
+
+    toast.innerText = message;
+
+    toast.classList.add('show');
+
+    setTimeout(()=>{
+
+        toast.classList.remove('show');
+
+    },2500);
+
+}
+
+// 🚀 POST REVIEW
+
+async function postReview(platform){
+
+    const reviewText = reviewBox.value;
+
+    if(!reviewText){
+
+        showToast("Please write or generate a review first.");
+
         return;
+
     }
 
-    navigator.clipboard.writeText(reviewText);
+    await copyReview(reviewText);
 
-    if (platform === "google") {
-        alert("Review copied! Paste it on Google.");
-        window.open("https://www.google.com/search?q=pizzaexpress+powai+reviews#ebo=2", "_blank");
+    // ⭐ GOOGLE
+
+    if(platform === 'google'){
+
+        window.open(
+
+            "https://www.google.com/search?q=pizzaexpress+powai+reviews#ebo=2",
+
+            "_blank"
+
+        );
+
     }
 
-    if (platform === "zomato") {
-        alert("Opening Zomato app...");
+    // 🍽️ ZOMATO
 
-        const zomatoWeb = "https://link.zomato.com/xqzv/rshare?id=1328489136fbb945d";
+    if(platform === 'zomato'){
+
+        const zomatoWeb =
+
+        "https://link.zomato.com/xqzv/rshare?id=1328489136fbb945d";
+
         const ua = navigator.userAgent;
 
         const isAndroid = /android/i.test(ua);
+
         const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-        if (isAndroid) {
-            window.location.href =
-                "intent://r/1328489136#Intent;scheme=zomato;package=com.application.zomato;end";
+        if(isAndroid){
 
-            setTimeout(() => {
-                window.open(zomatoWeb, "_blank");
-            }, 1500);
+            window.location.href =
+
+            "intent://r/1328489136#Intent;scheme=zomato;package=com.application.zomato;end";
+
+            setTimeout(()=>{
+
+                window.open(zomatoWeb,'_blank');
+
+            },1500);
+
         }
 
-        else if (isIOS) {
+        else if(isIOS){
+
             window.location.href = "zomato://r/1328489136";
 
-            setTimeout(() => {
-                window.open(zomatoWeb, "_blank");
-            }, 2000);
+            setTimeout(()=>{
+
+                window.open(zomatoWeb,'_blank');
+
+            },2000);
+
         }
 
-        else {
-            window.open(zomatoWeb, "_blank");
+        else{
+
+            window.open(zomatoWeb,'_blank');
+
         }
+
     }
+
 }
+
 </script>
 
 </body>
+
 </html>
