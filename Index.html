@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8" />
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>PizzaExpress Quick Review</title>
@@ -15,363 +11,219 @@
 <style>
 
 *{
-
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
-
 }
 
 body{
-
     font-family:'Roboto',sans-serif;
-
     background:#111;
-
     min-height:100vh;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     padding:20px;
-
     color:#fff;
-
 }
 
 .container{
-
     width:100%;
-
     max-width:430px;
-
     background:#1b1b1b;
-
     border-radius:22px;
-
     padding:25px;
-
     box-shadow:0 10px 35px rgba(0,0,0,0.45);
-
     animation:fadeIn .4s ease;
-
 }
 
 .logo{
-
     text-align:center;
-
     margin-bottom:18px;
-
 }
 
 .logo h1{
-
     font-size:28px;
-
     font-weight:700;
-
-    color:#fff;
-
 }
 
 .logo p{
-
     color:#aaa;
-
     font-size:14px;
-
     margin-top:5px;
-
 }
 
 .section{
-
     margin-top:18px;
-
 }
 
 label{
-
     display:block;
-
     margin-bottom:8px;
-
     font-size:14px;
-
     color:#ddd;
-
 }
 
 .rating{
-
     display:flex;
-
     justify-content:center;
-
     gap:8px;
-
     margin-top:8px;
-
 }
 
 .star{
-
     font-size:38px;
-
     cursor:pointer;
-
     color:#444;
-
     transition:.2s;
-
     user-select:none;
-
 }
 
 .star:hover{
-
     transform:scale(1.18);
-
 }
 
 .star.active{
-
     color:#FFD700;
-
 }
 
 select,
-
 textarea{
-
     width:100%;
-
     border:none;
-
     outline:none;
-
     border-radius:14px;
-
     padding:14px;
-
     background:#2b2b2b;
-
     color:#fff;
-
     font-size:15px;
-
-}
-
-select{
-
-    cursor:pointer;
-
 }
 
 textarea{
-
     min-height:120px;
-
     resize:none;
-
     line-height:1.5;
-
 }
 
 .counter{
-
     text-align:right;
-
     font-size:12px;
-
     color:#999;
-
     margin-top:6px;
-
 }
 
 .upload-box{
-
     border:2px dashed #444;
-
     border-radius:16px;
-
     padding:18px;
-
     text-align:center;
-
     background:#242424;
-
-    transition:.3s;
-
 }
 
 .upload-box:hover{
-
     border-color:#e23744;
-
 }
 
 input[type="file"]{
-
     margin-top:10px;
-
     color:#ddd;
-
     width:100%;
-
 }
 
 .preview-wrapper{
-
     margin-top:15px;
-
 }
 
 .preview{
-
     width:100%;
-
     border-radius:14px;
-
     object-fit:cover;
-
     max-height:220px;
-
 }
 
 .buttons{
-
     margin-top:20px;
-
     display:flex;
-
     flex-direction:column;
-
     gap:12px;
-
 }
 
 button{
-
     border:none;
-
     padding:15px;
-
     border-radius:14px;
-
     font-size:15px;
-
     font-weight:600;
-
     cursor:pointer;
-
     transition:.25s;
-
 }
 
 button:hover{
-
     transform:translateY(-2px);
-
 }
 
 .google-btn{
-
     background:#fff;
-
     color:#000;
-
 }
 
 .zomato-btn{
-
     background:#e23744;
-
     color:#fff;
+}
 
+.status{
+    margin-top:15px;
+    padding:12px;
+    background:#202020;
+    border-radius:14px;
+    font-size:13px;
+    color:#ddd;
 }
 
 .toast{
-
     position:fixed;
-
     bottom:25px;
-
     left:50%;
-
     transform:translateX(-50%);
-
     background:#1f1f1f;
-
     color:#fff;
-
     padding:12px 18px;
-
     border-radius:12px;
-
     font-size:14px;
-
     opacity:0;
-
     pointer-events:none;
-
     transition:.3s;
-
 }
 
 .toast.show{
-
     opacity:1;
-
     bottom:35px;
-
 }
 
 @keyframes fadeIn{
-
     from{
-
         opacity:0;
-
         transform:translateY(18px);
-
     }
-
     to{
-
         opacity:1;
-
         transform:translateY(0);
-
     }
-
 }
 
 @media(max-width:480px){
 
     .container{
-
         padding:20px;
-
     }
 
     .star{
-
         font-size:34px;
-
     }
-
 }
 
 </style>
-
 </head>
 
 <body>
@@ -379,90 +231,57 @@ button:hover{
 <div class="container">
 
     <div class="logo">
-
         <h1>Quick Review</h1>
-
         <p>Share your experience with us</p>
-
     </div>
 
-    <!-- Rating -->
-
     <div class="section">
-
         <label>Rate Your Experience</label>
 
-        <div class="rating" id="ratingContainer">
+        <div class="rating">
 
-            <span class="star" data-rating="1">★</span>
-
-            <span class="star" data-rating="2">★</span>
-
-            <span class="star" data-rating="3">★</span>
-
-            <span class="star" data-rating="4">★</span>
-
-            <span class="star" data-rating="5">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
 
         </div>
-
     </div>
 
-    <!-- Staff -->
-
     <div class="section">
-
         <label>Select Staff</label>
 
         <select id="staff">
 
             <option value="">Choose Staff</option>
-
             <option>Sana</option>
-
             <option>Kamana</option>
-
             <option>Rahul</option>
-
             <option>Nikhil</option>
-
             <option>Yaseen</option>
-
             <option>Vaibhav</option>
-
             <option>Swapnil</option>
-
             <option>Amandeep</option>
 
         </select>
-
     </div>
-
-    <!-- Review -->
 
     <div class="section">
 
         <label>Your Review</label>
 
-        <textarea 
-
+        <textarea
             id="review"
-
             maxlength="300"
-
             placeholder="Your review will appear here..."
-
         ></textarea>
 
         <div class="counter">
-
             <span id="charCount">0</span>/300
-
         </div>
 
     </div>
-
-    <!-- Upload -->
 
     <div class="section">
 
@@ -478,22 +297,20 @@ button:hover{
 
     </div>
 
-    <!-- Buttons -->
-
     <div class="buttons">
 
-        <button class="google-btn" onclick="postReview('google')">
-
+        <button class="google-btn" id="googleBtn">
             ⭐ Post on Google
-
         </button>
 
-        <button class="zomato-btn" onclick="postReview('zomato')">
-
+        <button class="zomato-btn" id="zomatoBtn">
             🍽️ Post on Zomato
-
         </button>
 
+    </div>
+
+    <div class="status" id="status">
+        Ready to generate review.
     </div>
 
 </div>
@@ -502,17 +319,14 @@ button:hover{
 
 <script>
 
-let rating = 0;
-
 const stars = document.querySelectorAll('.star');
-
 const reviewBox = document.getElementById('review');
-
 const staffSelect = document.getElementById('staff');
-
 const charCount = document.getElementById('charCount');
+const toast = document.getElementById('toast');
+const statusBox = document.getElementById('status');
 
-// ⭐ STAR CLICK
+let rating = 0;
 
 stars.forEach((star,index)=>{
 
@@ -520,35 +334,26 @@ stars.forEach((star,index)=>{
 
         rating = index + 1;
 
-        updateStars(rating);
-
+        updateStars();
         generateReview();
 
     });
 
 });
 
-// ⭐ STAR VISUAL
-
-function updateStars(value){
+function updateStars(){
 
     stars.forEach((star,index)=>{
 
-        if(index < value){
-
+        if(index < rating){
             star.classList.add('active');
-
         }else{
-
             star.classList.remove('active');
-
         }
 
     });
 
 }
-
-// ✍️ REVIEW GENERATOR
 
 function generateReview(){
 
@@ -556,77 +361,56 @@ function generateReview(){
 
     if(!staff || rating === 0) return;
 
-    const positiveReviews = [
-
-        `Amazing experience! ${staff} was very friendly and attentive. Loved the food and service.`,
-
-        `${staff} provided excellent service. Everything was perfect and well managed.`,
-
-        `Had a wonderful time. ${staff} was professional, polite and very helpful.`,
-
-        `Fantastic hospitality from ${staff}. Great food and ambience.`
-
+    const positive = [
+        `Amazing experience! ${staff} was very friendly and attentive.`,
+        `${staff} provided excellent service. Loved the food and ambience.`,
+        `Fantastic hospitality from ${staff}. Highly recommended.`,
+        `Really enjoyed the service by ${staff}. Great food quality.`
     ];
 
-    const mediumReviews = [
-
-        `Good experience overall. ${staff} was helpful and service was decent.`,
-
-        `Food was nice and ${staff} handled everything well.`,
-
-        `Nice ambience and decent service by ${staff}.`
-
+    const medium = [
+        `Good experience overall. ${staff} was helpful.`,
+        `Food was nice and service was decent.`,
+        `${staff} handled everything professionally.`
     ];
 
-    const negativeReviews = [
-
-        `Service could improve a little. Hoping for a better experience next time.`,
-
-        `Average experience overall. Some improvements are needed.`,
-
+    const negative = [
+        `Service could improve a little.`,
+        `Average experience overall.`,
         `${staff} tried helping but service was slightly slow.`
-
     ];
 
-    let selectedReview = "";
+    let selected = "";
 
     if(rating >= 4){
 
-        selectedReview = positiveReviews[
-
-            Math.floor(Math.random() * positiveReviews.length)
-
-        ];
+        selected = positive[Math.floor(Math.random()*positive.length)];
 
     }else if(rating === 3){
 
-        selectedReview = mediumReviews[
-
-            Math.floor(Math.random() * mediumReviews.length)
-
-        ];
+        selected = medium[Math.floor(Math.random()*medium.length)];
 
     }else{
 
-        selectedReview = negativeReviews[
-
-            Math.floor(Math.random() * negativeReviews.length)
-
-        ];
+        selected = negative[Math.floor(Math.random()*negative.length)];
 
     }
 
-    reviewBox.value = selectedReview;
+    reviewBox.value = selected;
 
     updateCounter();
 
 }
 
-// STAFF CHANGE
-
 staffSelect.addEventListener('change',generateReview);
 
-// 📸 IMAGE PREVIEW
+reviewBox.addEventListener('input',updateCounter);
+
+function updateCounter(){
+
+    charCount.innerText = reviewBox.value.length;
+
+}
 
 document.getElementById('photo').addEventListener('change',function(e){
 
@@ -639,7 +423,6 @@ document.getElementById('photo').addEventListener('change',function(e){
     reader.onload = function(event){
 
         document.getElementById('preview').innerHTML =
-
         `<img src="${event.target.result}" class="preview">`;
 
     };
@@ -648,51 +431,7 @@ document.getElementById('photo').addEventListener('change',function(e){
 
 });
 
-// 🔢 CHARACTER COUNTER
-
-reviewBox.addEventListener('input',updateCounter);
-
-function updateCounter(){
-
-    charCount.innerText = reviewBox.value.length;
-
-}
-
-// 📋 COPY FUNCTION
-
-async function copyReview(text){
-
-    try{
-
-        await navigator.clipboard.writeText(text);
-
-        showToast("Review copied successfully!");
-
-    }catch{
-
-        const temp = document.createElement("textarea");
-
-        temp.value = text;
-
-        document.body.appendChild(temp);
-
-        temp.select();
-
-        document.execCommand("copy");
-
-        document.body.removeChild(temp);
-
-        showToast("Review copied successfully!");
-
-    }
-
-}
-
-// 🔔 TOAST
-
 function showToast(message){
-
-    const toast = document.getElementById('toast');
 
     toast.innerText = message;
 
@@ -706,88 +445,71 @@ function showToast(message){
 
 }
 
-// 🚀 POST REVIEW
+async function copyReview(){
 
-async function postReview(platform){
+    const text = reviewBox.value.trim();
 
-    const reviewText = reviewBox.value;
+    if(!text){
 
-    if(!reviewText){
-
-        showToast("Please write or generate a review first.");
-
-        return;
+        showToast("Generate review first");
+        return false;
 
     }
 
-    await copyReview(reviewText);
+    try{
 
-    // ⭐ GOOGLE
+        await navigator.clipboard.writeText(text);
 
-    if(platform === 'google'){
+        return true;
 
-        window.open(
+    }catch{
 
-            "https://www.google.com/search?q=pizzaexpress+powai+reviews#ebo=2",
-
-            "_blank"
-
-        );
-
-    }
-
-    // 🍽️ ZOMATO
-
-    if(platform === 'zomato'){
-
-        const zomatoWeb =
-
-        "https://link.zomato.com/xqzv/rshare?id=1328489136fbb945d";
-
-        const ua = navigator.userAgent;
-
-        const isAndroid = /android/i.test(ua);
-
-        const isIOS = /iPhone|iPad|iPod/i.test(ua);
-
-        if(isAndroid){
-
-            window.location.href =
-
-            "intent://r/1328489136#Intent;scheme=zomato;package=com.application.zomato;end";
-
-            setTimeout(()=>{
-
-                window.open(zomatoWeb,'_blank');
-
-            },1500);
-
-        }
-
-        else if(isIOS){
-
-            window.location.href = "zomato://r/1328489136";
-
-            setTimeout(()=>{
-
-                window.open(zomatoWeb,'_blank');
-
-            },2000);
-
-        }
-
-        else{
-
-            window.open(zomatoWeb,'_blank');
-
-        }
+        showToast("Clipboard blocked");
+        return false;
 
     }
 
 }
 
+document.getElementById('googleBtn').addEventListener('click',async()=>{
+
+    const copied = await copyReview();
+
+    if(copied){
+
+        statusBox.innerText = "Review copied. Opening Google...";
+
+        window.open(
+            "https://search.google.com/local/writereview?placeid=ChIJ-QAAQObH5zsRrDxQZOGu0ds",
+            "_blank"
+        );
+
+        showToast("Copied to clipboard");
+
+    }
+
+});
+
+document.getElementById('zomatoBtn').addEventListener('click',async()=>{
+
+    const copied = await copyReview();
+
+    if(copied){
+
+        statusBox.innerText = "Review copied. Opening Zomato...";
+
+        window.open(
+            "https://link.zomato.com/xqzv/rshare?id=1328489136fbb945d",
+            "_blank"
+        );
+
+        showToast("Copied to clipboard");
+
+    }
+
+});
+
 </script>
 
 </body>
-
 </html>
